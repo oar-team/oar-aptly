@@ -116,7 +116,7 @@ case $ACTION in
   ;;
   *)
     echo -e "Error: Unknown action $ACTION\n" 1>&2
-    usage 1>&1
+    usage 1>&2
     exit 1
   ;;
 esac
