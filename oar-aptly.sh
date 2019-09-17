@@ -26,7 +26,7 @@ Actions:
   manage-debian-mirrors    Create/update mirrors of the official Debian repositories + snaptshots
   create-testing-repos     Create the testing local repositories for the target official Debian distributions
   handle-incoming          Handle incoming packages (dput -> inoticoming)
-  help                     Pring this message
+  help                     Print this message
 
 EOF
 
@@ -43,7 +43,7 @@ fi
 
 case $ACTION in
   manage-debian-mirrors)
-    for d in wheezy wheezy-backports jessie jessie-backports stretch stretch-backports sid experimental; do
+    for d in wheezy wheezy-backports jessie jessie-backports stretch stretch-backports buster buster-backports ssid experimental; do
       if aptly mirror -raw=true list 2> /dev/null | grep -q -e "^$d$"; then
         echo "*** Mirror for $d already exists"
         if [ -z "$NO_MIRROR_UPDATE" ]; then
@@ -69,7 +69,7 @@ case $ACTION in
     done
   ;;
   create-testing-repos)
-    for d in wheezy-backports_beta jessie-backports_beta stretch-backports_beta sid_beta sid_alpha; do
+    for d in wheezy-backports_beta jessie-backports_beta stretch-backports_beta buster-backports_beta sid_beta sid_alpha; do
       if aptly repo -raw=true list 2> /dev/null | grep -q -e "^${d}$"; then
         echo "*** Repo ${d} already exists"
       else
