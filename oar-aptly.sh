@@ -74,7 +74,7 @@ case $ACTION in
         echo "*** Repo ${d} already exists"
       else
         echo "*** Create beta repo for $d"
-        aptly repo -architectures=amd64 create ${d}
+        aptly repo create ${d}
       fi
     done
   ;;
